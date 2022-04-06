@@ -15,7 +15,7 @@
   <%= link_to "Edit #{@friend.first_name}", edit_friend_path(@friend), class: "btn btn-secondary" %>
   <%= link_to "Back", friends_path, class: "btn btn-secondary"%>
 
-  <%= button_to "Destroy #{@friend.first_name}", @friend, method: :delete, class: "btn btn-secondary my-2" %>
+  <%= button_to "Destroy #{@friend.first_name}", @friend, method: :delete, class: "btn btn-outline-danger my-2" %>
   </p>
 </div>
 
