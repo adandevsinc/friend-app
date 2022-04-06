@@ -1,31 +1,35 @@
 
+<% if user_signed_in? %>
 
-<h1>Friends</h1>
-<div class="table-responsive">
-  <table class="table table-striped table-hover table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th><strong>First name</strong></th>
-        <th><strong>Last name</strong></th>
-        <th><strong>Email</strong></th>
-        <th><strong>Phone</strong></th>
-        <th><strong>Twitter</strong></th>
-        <th><strong>Show</strong></th>
-      </tr>
-    </thead>
-
-    <div id="friends">
-      <% @friends.each do |friend| %>
+  <h1>Friends</h1>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-dark">
         <tr>
-            <%= render friend %>
-          <td>
-            <%= link_to "Show", friend %>
-          </td>
+          <th><strong>Name</strong></th>
+          <th><strong>Email</strong></th>
+          <th><strong>Phone</strong></th>
+          <th><strong>Twitter</strong></th>
+          <th> </th>
         </tr>
-      <% end %>
-    </div>
+      </thead>
 
-  </table>
-</div>
+      <div id="friends">
+        <% @friends.each do |friend| %>
+          <% if friend.user == current_user%>
+            <tr>
+                <%= render friend %>
+            </tr>
+          <% end %>
+        <% end %>
+      </div>
 
-<%= link_to "New friend", new_friend_path, class: "btn btn-secondary" %>
+    </table>
+  </div>
+
+  <%= link_to "New friend", new_friend_path, class: "btn btn-secondary" %>
+
+<% else %>
+  <h1>Hello World</h1>
+  <p>This is my first web page.</p>
+<% end %>
